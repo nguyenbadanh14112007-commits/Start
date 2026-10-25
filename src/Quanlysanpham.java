@@ -18,7 +18,6 @@ public class Quanlysanpham {
     public void setDanhsachSP(ArrayList<Sanpham> danhsachSP) {
         DanhsachSP = danhsachSP;
     }
-
     public void Them_sp(ArrayList<Nhacungcap> nhacungcaps) {
         Sanpham sanpham;
         System.out.println("Nhập loại sản phẩm cần thêm: ");
