@@ -1,89 +1,91 @@
+package Sanpham ;
+
+import dichvu.Nhacungcap;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Quanlysanpham {
-    private ArrayList<Sanpham> DanhsachSP;
-    Scanner sc = new Scanner(System.in);
+    private ArrayList<Sanpham> danhSachSanPham;
 
     public Quanlysanpham() {
-        DanhsachSP = new ArrayList<>();
+        danhSachSanPham = new ArrayList<>();
     }
 
-    public ArrayList<Sanpham> getDanhsachSP() {
-        return DanhsachSP;
+    public ArrayList<Sanpham> getDanhSachSanPham() {
+        return danhSachSanPham;
     }
 
-    public void setDanhsachSP(ArrayList<Sanpham> danhsachSP) {
-        DanhsachSP = danhsachSP;
+    public void setDanhSachSanPham(ArrayList<Sanpham> danhSachSanPham) {
+        this.danhSachSanPham = danhSachSanPham;
     }
-    public void Them_sp(ArrayList<Nhacungcap> nhacungcaps) {
-        Sanpham sanpham;
+    public void themSanPham(Scanner sc, ArrayList<Nhacungcap> danhSachNhaCungCap) {
+        Sanpham sanPham;
         System.out.println("Nhập loại sản phẩm cần thêm: ");
         System.out.println("1. Thực Phẩm");
         System.out.println("2. Tiêu Dùng");
         System.out.println("3. Điện tử ");
-        int Luachon = sc.nextInt();
+        int luaChon = sc.nextInt();
         sc.nextLine();
-        switch (Luachon) {
+        switch (luaChon) {
             case 1:
-                if (nhacungcaps == null) {
+                if (danhSachNhaCungCap == null) {
                     System.out.println("Vui lòng thêm nhà cung cấp!");
                 } else {
-                    sanpham = new ThucPham();
-                    sanpham.set_sp();
+                    sanPham = new ThucPham();
+                    sanPham.setSanPham(sc);
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
-                    DanhsachSP.add(sanpham);
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
+                    danhSachSanPham.add(sanPham);
                     System.out.println("Thêm sản phẩm thành công!");
-                    nhacungcaps.get(Luachon_ncc - 1).getSanpham_cungcap().add(sanpham);
+                    danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getSanPhamCungCap().add(sanPham);
                     // hoá đơn đối tác
                 }
                 break;
             case 2:
-                if (nhacungcaps == null) {
+                if (danhSachNhaCungCap == null) {
                     System.out.println("Vui lòng thêm nhà cung cấp!");
                 } else {
-                    sanpham = new Tieudung();
-                    sanpham.set_sp();
+                    sanPham = new Tieudung();
+                    sanPham.setSanPham(sc);
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
-                    DanhsachSP.add(sanpham);
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
+                    danhSachSanPham.add(sanPham);
                     System.out.println("Thêm sản phẩm thành công!");
-                    nhacungcaps.get(Luachon_ncc - 1).getSanpham_cungcap().add(sanpham);
+                    danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getSanPhamCungCap().add(sanPham);
                     // hoá đơn đối tác
                 }
                 break;
             case 3:
-                if (nhacungcaps == null) {
+                if (danhSachNhaCungCap == null) {
                     System.out.println("Vui lòng thêm nhà cung cấp!");
                 } else {
-                    sanpham = new Dientu();
-                    sanpham.set_sp();
+                    sanPham = new Dientu();
+                    sanPham.setSanPham(sc);
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
-                    DanhsachSP.add(sanpham);
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
+                    danhSachSanPham.add(sanPham);
                     System.out.println("Thêm sản phẩm thành công!");
-                    nhacungcaps.get(Luachon_ncc - 1).getSanpham_cungcap().add(sanpham);
+                    danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getSanPhamCungCap().add(sanPham);
                     // hoá đơn đối tác
                 }
                 break;
@@ -93,46 +95,46 @@ public class Quanlysanpham {
         }
     }
 
-    public void Tao_du_lieu_sp(ArrayList<Nhacungcap> nhacungcaps) {
+    public void taoDuLieuSanPham(Scanner sc, ArrayList<Nhacungcap> danhSachNhaCungCap) {
         System.out.println("Tạo dữ liệu cho danh sách sản phẩm!");
-        boolean countinue = true;
-        while (countinue) {
-            Them_sp(nhacungcaps);
+        boolean tiepTuc = true;
+        while (tiepTuc) {
+            themSanPham(sc, danhSachNhaCungCap);
             System.out.println("Bạn có muốn tiếp tục(1/0): ");
-            int Luachon = sc.nextInt();
+            int luaChon = sc.nextInt();
             sc.nextLine();
-            if (Luachon == 0) {
-                countinue = false;
+            if (luaChon == 0) {
+                tiepTuc = false;
             }
         }
         System.out.println("Tạo dữ liệu thành công!");
     }
 
-    public int Tim_kiem_sp(String ma_sp) {
-        for (int i = 0; i < DanhsachSP.size(); i++) {
-            if (DanhsachSP.get(i).getTen_sp().equalsIgnoreCase(ma_sp)) {
+    public int timKiemSanPham(String maSanPham) {
+        for (int i = 0; i < danhSachSanPham.size(); i++) {
+            if (danhSachSanPham.get(i).getTenSanPham().equalsIgnoreCase(maSanPham)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public void Xoa_sp(String ma_sp) {
-        int vi_tri = Tim_kiem_sp(ma_sp);
-        if (vi_tri == -1) {
+    public void xoaSanPham(String maSanPham) {
+        int viTri = timKiemSanPham(maSanPham);
+        if (viTri == -1) {
             System.out.println("Mã sản phẩm không hợp lệ, sản phẩm không tồn tại!");
         } else {
-            DanhsachSP.remove(vi_tri);
+            danhSachSanPham.remove(viTri);
             System.out.println("Xoá sản phẩm thành công!");
         }
     }
 
-    public void Sua_tt_sp(String ma_sp, ArrayList<Nhacungcap> nhacungcaps) {
+    public void suaThongTinSanPham(Scanner sc, String maSanPham, ArrayList<Nhacungcap> danhSachNhaCungCap) {
         System.out.println("Sửa thông tin sản phẩm!");
-        int index = Tim_kiem_sp(ma_sp);
+        int index = timKiemSanPham(maSanPham);
         DateTimeFormatter khuon = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Sanpham sanpham = DanhsachSP.get(index);
-        if (sanpham instanceof ThucPham) {
+        Sanpham sanPham = danhSachSanPham.get(index);
+        if (sanPham instanceof ThucPham) {
             System.out.println("Chọn thuộc tính cần sửa: ");
             System.out.println("1.Mã sản phẩm!");
             System.out.println("2.Tên sản phẩm!");
@@ -150,63 +152,63 @@ public class Quanlysanpham {
             switch (luachon) {
                 case 1:
                     System.out.println("Nhập mã sản phẩm mới: ");
-                    sanpham.setMa_sp(sc.nextLine());
+                    sanPham.setMaSanPham(sc.nextLine());
                     break;
                 case 2:
                     System.out.println("Nhập tên mới cho sản phẩm: ");
-                    sanpham.setTen_sp(sc.nextLine());
+                    sanPham.setTenSanPham(sc.nextLine());
                     break;
                 case 3:
                     System.out.println("Nhập giá nhập mới cho sản phẩm: ");
-                    sanpham.setGia_nhap(sc.nextInt());
+                    sanPham.setGiaNhap(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 4:
                     System.out.println("Nhập giá bán mới cho sản phẩm: ");
-                    sanpham.setGia_ban(sc.nextInt());
+                    sanPham.setGiaBan(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 5:
                     System.out.println("Nhập số lượng tồn kho mới cho sản phẩm: ");
-                    sanpham.setSo_luong_ton_kho(sc.nextInt());
+                    sanPham.setSoLuongTonKho(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 6:
                     System.out.println("Nhập số sản phẩm trưng bày mới cho sản phẩm: ");
-                    sanpham.setSo_sp_trung_bay(sc.nextInt());
+                    sanPham.setSoSanPhamTrungBay(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 7:
                     System.out.println("Nhập ngày sản xuất mới cho sản phẩm(dd/MM/yyyy): ");
-                    ((ThucPham) sanpham).setNgay_san_xuat(LocalDate.parse(sc.nextLine(), khuon));
+                    ((ThucPham) sanPham).setNgaySanXuat(LocalDate.parse(sc.nextLine(), khuon));
                     break;
                 case 8:
                     System.out.println("Nhập hạn sử dụng mới cho sản phẩm(dd/MM/yyyy): ");
-                    ((ThucPham) sanpham).setHan_su_dung(LocalDate.parse(sc.nextLine(), khuon));
+                    ((ThucPham) sanPham).setHanSuDung(LocalDate.parse(sc.nextLine(), khuon));
                     break;
                 case 9:
                     System.out.println("Nhập nhiệt độ bảo quản mới cho sản phẩm: ");
-                    ((ThucPham) sanpham).setNhiet_do_bao_quan(sc.nextInt());
+                    ((ThucPham) sanPham).setNhietDoBaoQuan(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 10:
                     System.out.println("Nhập môi trường bảo quản mới cho sản phẩm: ");
-                    ((ThucPham) sanpham).setBao_quan(sc.nextLine());
+                    ((ThucPham) sanPham).setBaoQuan(sc.nextLine());
                     break;
                 case 11:
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
                 default:
                     System.out.println("Lựa chọn không hợp lệ!");
                     break;
             }
-        } else if (sanpham instanceof Tieudung) {
+        } else if (sanPham instanceof Tieudung) {
             System.out.println("Chọn thuộc tính cần sửa: ");
             System.out.println("1.Mã sản phẩm!");
             System.out.println("2.Tên sản phẩm!");
@@ -224,63 +226,63 @@ public class Quanlysanpham {
             switch (luachon) {
                 case 1:
                     System.out.println("Nhập mã sản phẩm mới: ");
-                    sanpham.setMa_sp(sc.nextLine());
+                    sanPham.setMaSanPham(sc.nextLine());
                     break;
                 case 2:
                     System.out.println("Nhập tên mới cho sản phẩm: ");
-                    sanpham.setTen_sp(sc.nextLine());
+                    sanPham.setTenSanPham(sc.nextLine());
                     break;
                 case 3:
                     System.out.println("Nhập giá nhập mới cho sản phẩm: ");
-                    sanpham.setGia_nhap(sc.nextInt());
+                    sanPham.setGiaNhap(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 4:
                     System.out.println("Nhập giá bán mới cho sản phẩm: ");
-                    sanpham.setGia_ban(sc.nextInt());
+                    sanPham.setGiaBan(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 5:
                     System.out.println("Nhập số lượng tồn kho mới cho sản phẩm: ");
-                    sanpham.setSo_luong_ton_kho(sc.nextInt());
+                    sanPham.setSoLuongTonKho(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 6:
                     System.out.println("Nhập số sản phẩm trưng bày mới cho sản phẩm: ");
-                    sanpham.setSo_sp_trung_bay(sc.nextInt());
+                    sanPham.setSoSanPhamTrungBay(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 7:
                     System.out.println("Nhập thương hiệu mới cho sản phẩm: ");
-                    ((Tieudung) sanpham).setThuong_hieu(sc.nextLine());
+                    ((Tieudung) sanPham).setThuongHieu(sc.nextLine());
                     break;
                 case 8:
                     System.out.println("Nhập nơi sản xuất mới cho sản phẩm: ");
-                    ((Tieudung) sanpham).setNoi_sx(sc.nextLine());
+                    ((Tieudung) sanPham).setNoiSanXuat(sc.nextLine());
                     break;
                 case 9:
                     System.out.println("Nhập phân loại mới cho sản phẩm: ");
-                    ((Tieudung) sanpham).setPhan_loai(sc.nextLine());
+                    ((Tieudung) sanPham).setPhanLoai(sc.nextLine());
                     sc.nextLine();
                     break;
                 case 10:
                     System.out.println("Nhập lưu ý an toàn mới cho sản phẩm: ");
-                    ((Tieudung) sanpham).setLuu_y_an_toan(sc.nextLine());
+                    ((Tieudung) sanPham).setLuuYAnToan(sc.nextLine());
                     break;
                 case 11:
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
                 default:
                     System.out.println("Lựa chọn không hợp lệ!");
                     break;
             }
-        } else if (sanpham instanceof Dientu) {
+        } else if (sanPham instanceof Dientu) {
             System.out.println("Chọn thuộc tính cần sửa: ");
             System.out.println("1.Mã sản phẩm!");
             System.out.println("2.Tên sản phẩm!");
@@ -297,55 +299,55 @@ public class Quanlysanpham {
             switch (luachon) {
                 case 1:
                     System.out.println("Nhập mã sản phẩm mới: ");
-                    sanpham.setMa_sp(sc.nextLine());
+                    sanPham.setMaSanPham(sc.nextLine());
                     break;
                 case 2:
                     System.out.println("Nhập tên mới cho sản phẩm: ");
-                    sanpham.setTen_sp(sc.nextLine());
+                    sanPham.setTenSanPham(sc.nextLine());
                     break;
                 case 3:
                     System.out.println("Nhập giá nhập mới cho sản phẩm: ");
-                    sanpham.setGia_nhap(sc.nextInt());
+                    sanPham.setGiaNhap(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 4:
                     System.out.println("Nhập giá bán mới cho sản phẩm: ");
-                    sanpham.setGia_ban(sc.nextInt());
+                    sanPham.setGiaBan(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 5:
                     System.out.println("Nhập số lượng tồn kho mới cho sản phẩm: ");
-                    sanpham.setSo_luong_ton_kho(sc.nextInt());
+                    sanPham.setSoLuongTonKho(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 6:
                     System.out.println("Nhập số sản phẩm trưng bày mới cho sản phẩm: ");
-                    sanpham.setSo_sp_trung_bay(sc.nextInt());
+                    sanPham.setSoSanPhamTrungBay(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 7:
                     System.out.println("Nhập thời gian bảo hành mới cho sản phẩm(theo tháng): ");
-                    ((Dientu) sanpham).setThoi_gian_bao_hanh(sc.nextInt());
+                    ((Dientu) sanPham).setThoiGianBaoHanh(sc.nextInt());
                     sc.nextLine();
                     break;
                 case 8:
                     System.out.println("Nhập số tiền bảo hành(theo tháng): ");
-                    ((Dientu) sanpham).setChat_lieu(sc.nextLine());
+                    ((Dientu) sanPham).setChatLieu(sc.nextLine());
                     break;
                 case 9:
                     System.out.println("Nhập chất liệu mới cho sản phẩm: ");
-                    ((Dientu) sanpham).setChat_lieu(sc.nextLine());
+                    ((Dientu) sanPham).setChatLieu(sc.nextLine());
                     sc.nextLine();
                     break;
                 case 10:
                     System.out.println("Chọn nhà cung cấp: ");
-                    for (int i = 0; i < nhacungcaps.size(); i++) {
-                        System.out.println((i + 1) + ". Nhà cung cấp" + nhacungcaps.get(i).getTen_dt() + "!");
+                    for (int i = 0; i < danhSachNhaCungCap.size(); i++) {
+                        System.out.println((i + 1) + ". Nhà cung cấp" + danhSachNhaCungCap.get(i).getTenDoiTac() + "!");
                     }
                     System.out.println("Nhập lựa chọn: ");
-                    int Luachon_ncc = sc.nextInt();
+                    int luaChonNhaCungCap = sc.nextInt();
                     sc.nextLine();
-                    sanpham.setMa_ncc(nhacungcaps.get(Luachon_ncc - 1).getMa_dt());
+                    sanPham.setMaNhaCungCap(danhSachNhaCungCap.get(luaChonNhaCungCap - 1).getMaDoiTac());
                 default:
                     System.out.println("Lựa chọn không hợp lệ!");
                     break;
@@ -353,14 +355,23 @@ public class Quanlysanpham {
         }
         System.out.println("Đã thay đổi thông tin sản phẩm!");
     }
-    public void in_danh_sach_sp()
+    public void inDanhSachSanPham()
     {
-        for ( Sanpham sp:DanhsachSP )
-            System.out.println(sp);
+        for ( Sanpham sanPham:danhSachSanPham )
+            System.out.println(sanPham);
     }
-    public void in_danh_sach_sp_cho_kh()
+    public void inDanhSachSanPhamChoKhachHang()
     {
-        for (Sanpham sp: DanhsachSP)
-            System.out.println(sp.toString_kh());
+        for (Sanpham sanPham: danhSachSanPham)
+            System.out.println(sanPham.toStringKhachHang());
+    }
+    public Sanpham traCuuSanPham( String maSanPham)
+    {
+        int index = timKiemSanPham(maSanPham);
+        if ( index == -1 )
+        {
+            return null ;
+        }
+        return danhSachSanPham.get(index) ;
     }
 }

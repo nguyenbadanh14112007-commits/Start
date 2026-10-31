@@ -1,87 +1,85 @@
 import java.util.Scanner;
 
 public abstract class LuuTru {
-    private String Ma_khu_vuc , Ten_khu_vuc , Trang_thai;
-    private int Suc_chua , Muc_tai_hien_tai ;
-    Scanner sc = new Scanner(System.in) ;
+    private String maKhuVuc , tenKhuVuc , trangThai;
+    private int sucChua , mucTaiHienTai ;
     public LuuTru ()
     {
-        Ma_khu_vuc = Trang_thai = Ten_khu_vuc = "" ;
-        Suc_chua = Muc_tai_hien_tai = 0 ;
+        maKhuVuc = trangThai = tenKhuVuc = "" ;
+        sucChua = mucTaiHienTai = 0 ;
     }
-    public LuuTru( String ma_khu_vuc , String trang_thai , int suc_chua , int muc_tai_hien_tai )
+    public LuuTru( String maKhuVuc , String trangThai , int sucChua , int mucTaiHienTai )
     {
-        Ma_khu_vuc = ma_khu_vuc ;
-        Trang_thai = trang_thai ;
-        Suc_chua = suc_chua ;
-        Muc_tai_hien_tai = muc_tai_hien_tai ;
+        this.maKhuVuc = maKhuVuc ;
+        this.trangThai = trangThai ;
+        this.sucChua = sucChua ;
+        this.mucTaiHienTai = mucTaiHienTai ;
     }
-    public boolean Ktra_day_kho ()
+    public boolean ktraDayKho ()
     {
         return true ;
     }
 
-    public String getTen_khu_vuc() {
-        return Ten_khu_vuc;
+    public String getTenKhuVuc() {
+        return tenKhuVuc;
     }
 
-    public void setTen_khu_vuc(String ten_khu_vuc) {
-        Ten_khu_vuc = ten_khu_vuc;
+    public void setTenKhuVuc(String tenKhuVuc) {
+        this.tenKhuVuc = tenKhuVuc;
     }
 
-    public void setTrang_thai(String trang_thai) {
-        Trang_thai = trang_thai;
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
 
-    public String getTrang_thai() {
-        return Trang_thai;
+    public String getTrangThai() {
+        return trangThai;
     }
 
-    public String getMa_khu_vuc() {
-        return Ma_khu_vuc;
+    public String getMaKhuVuc() {
+        return maKhuVuc;
     }
 
-    public int getSuc_chua() {
-        return Suc_chua;
+    public int getSucChua() {
+        return sucChua;
     }
 
-    public int getMuc_tai_hien_tai() {
-        return Muc_tai_hien_tai;
+    public int getMucTaiHienTai() {
+        return mucTaiHienTai;
     }
 
-    public void setMa_khu_vuc(String ma_khu_vuc) {
-        Ma_khu_vuc = ma_khu_vuc;
+    public void setMaKhuVuc(String maKhuVuc) {
+        this.maKhuVuc = maKhuVuc;
     }
 
-    public void setMuc_tai_hien_tai(int muc_tai_hien_tai) {
-        Muc_tai_hien_tai = muc_tai_hien_tai;
+    public void setMucTaiHienTai(int mucTaiHienTai) {
+        this.mucTaiHienTai = mucTaiHienTai;
     }
 
-    public void setSuc_chua(int suc_chua) {
-        Suc_chua = suc_chua;
+    public void setSucChua(int sucChua) {
+        this.sucChua = sucChua;
     }
-    public void set_luu_tru()
+    public void setLuuTru(Scanner sc)
     {
         System.out.println("Nhập mã khu vực: ");
-        Ma_khu_vuc = sc.nextLine() ;
+        maKhuVuc = sc.nextLine() ;
         System.out.println("Nhập tên khu vực: ");
-        Ten_khu_vuc = sc.nextLine() ;
+        tenKhuVuc = sc.nextLine() ;
         System.out.println("Nhập trạng thái(Hoạt động/Đầy/Bảo trì): ");
-        Trang_thai = sc.nextLine() ;
+        trangThai = sc.nextLine() ;
         System.out.println("Nhập sức chứa tối đa: ");
-        Suc_chua = sc.nextInt() ;
+        sucChua = sc.nextInt() ;
         System.out.println("Nhập sức chứa hiện tại: ");
-        Muc_tai_hien_tai = sc.nextInt() ;
+        mucTaiHienTai = sc.nextInt() ;
         sc.nextLine() ;
     }
     @Override
     public String toString() {
-        return "Mã Khu vực: " + Ma_khu_vuc + " | Tên khu vực: " + Ten_khu_vuc + " | Trạng thái: " + Trang_thai + " | Sức chứa tối đa : " + Suc_chua + " | Mức tải hiện tại: " + Muc_tai_hien_tai ;
+        return "Mã Khu vực: " + maKhuVuc + " | Tên khu vực: " + tenKhuVuc + " | Trạng thái: " + trangThai + " | Sức chứa tối đa : " + sucChua + " | Mức tải hiện tại: " + mucTaiHienTai ;
     }
 }
 class QuayTrungBay extends LuuTru
 {
-    private int Day ; // dãy hàng trưng bày
-    private String Loai_hang_trung_bay ;
-    Scanner sc = new Scanner(System.in) ;
+    private int day ; // dãy hàng trưng bày
+    private String loaiHangTrungBay ;
 }
